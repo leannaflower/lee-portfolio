@@ -1,0 +1,180 @@
+.projects-page {
+    padding: 2rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+    color: #333;
+}
+
+.top-part {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+h1 {
+    font-family: "Source Serif 4", serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111;
+}
+
+h3 {
+    align-content: center;
+}
+
+.project-grid {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-card {
+    position: relative;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #03dac6;
+    z-index: 0;
+    transition: left 0.4s ease;
+    border-radius: 12px;
+}
+
+.project-card:hover::before {
+    left: 0;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.learn-more-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background-color: #03dac6;
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.project-card:hover .learn-more-btn {
+    background-color: white;
+    color: #000000;
+}
+
+.project-card:hover .learn-more-btn:hover {
+    background-color: #018786;
+}
+
+.project-card * {
+    position: relative;
+    z-index: 1;
+}
+
+.project-card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: #222;
+}
+
+.project-card p {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.tags {
+    margin-top: 1rem;
+}
+
+.tag {
+    background-color: #e0e0e0;
+    color: #444;
+    padding: 0.3rem 0.6rem;
+    margin-right: 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.project-details {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.figma-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #0077cc;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.project-card button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #03dac6;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.project-card button:hover {
+    background-color: #018786;
+}
+
+.pdf-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.pdf-modal-content {
+    background: #fff;
+    width: 95%;
+    height: 80%;
+    max-width: 1000px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
