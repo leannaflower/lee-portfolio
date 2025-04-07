@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Document, Page } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import './Projects.css';
 
 const projects = [
@@ -24,12 +26,13 @@ const Projects = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);
     const [pdfModalOpen, setPdfModalOpen] = useState(false);
     const [activePdf, setActivePdf] = useState('');
+    const isMobile = window.innerWidth <= 768;
 
     return (
         <div className="projects-page">
-            <div className='top-part'>
+            <div className="top-part">
                 <h1>My Projects</h1>
-                <h3>Click on each card to view the project pdfs to learn about the process!</h3>
+                {!isMobile && <h3>Click on each card to view the project PDFs and learn about the process!</h3>}
             </div>
 
             <div className="project-grid">
@@ -38,7 +41,7 @@ const Projects = () => {
                         key={index}
                         className="project-card"
                         onClick={() => {
-                            if (project.pdf) {
+                            if (!isMobile && project.pdf) {
                                 setActivePdf(project.pdf);
                                 setPdfModalOpen(true);
                             }
@@ -65,21 +68,44 @@ const Projects = () => {
                         >
                             {expandedIndex === index ? 'Show Less' : 'Read More'}
                         </button>
+
+                        {/* PDF View Button */}
+                        {isMobile ? (
+                            <a
+                                href={process.env.PUBLIC_URL + project.pdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <button className="learn-more-btn">View PDF</button>
+                            </a>
+                        ) : (
+                            <button
+                                className="learn-more-btn"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActivePdf(project.pdf);
+                                    setPdfModalOpen(true);
+                                }}
+                            >
+                                View PDF
+                            </button>
+                        )}
                     </div>
                 ))}
             </div>
 
+            {/* PDF Modal */}
             {pdfModalOpen && (
                 <div className="pdf-modal-backdrop" onClick={() => setPdfModalOpen(false)}>
                     <div className="pdf-modal-content" onClick={(e) => e.stopPropagation()}>
                         <button className="close-button" onClick={() => setPdfModalOpen(false)}>✕</button>
-                        <iframe
-                            src={activePdf}
-                            title="PDF Viewer"
-                            width="100%"
-                            height="100%"
-                            style={{ border: 'none' }}
-                        />
+                        <Document
+                            file={process.env.PUBLIC_URL + activePdf}
+                            onLoadError={console.error}
+                            loading={<p>Loading PDF…</p>}
+                        >
+                            <Page pageNumber={1} width={800} />
+                        </Document>
                     </div>
                 </div>
             )}

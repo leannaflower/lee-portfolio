@@ -35,7 +35,7 @@ const Home = () => {
                         <span className={isTyping ? 'cursor active' : 'cursor'}>|</span>
                     </h1>
                     <h2>a humble human who designs.</h2>
-                    <p>currently making imaginations become reality.</p>
+                    <p>currently making imaginations become reality</p>
                     <div className="cta-buttons">
                         <Link className="cta" to="/projects">See Work</Link>
                         <Link className="cta secondary" to="/contact">Get In Touch</Link>

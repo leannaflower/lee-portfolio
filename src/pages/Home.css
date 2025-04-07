@@ -208,3 +208,36 @@
 .cta-buttons {
     animation-delay: 2.2s;
 }
+
+/* mobile */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+
+    .hero-image {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+
+    .typewriter-text,
+    .cursor {
+        font-size: 2.2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
